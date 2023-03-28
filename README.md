@@ -48,15 +48,12 @@ The full form of an ARM is an advanced reduced instruction set computer (RISC) m
 
 13. check for execution of the output using run option 
 
-
-
 ## STM 32 CUBE PROGRAM :
 ```
 #include "main.h"
 #include "stdio.h"
 #include "stdbool.h"
 bool pb;
-
 
 int main(void)
 {
@@ -70,23 +67,18 @@ int main(void)
 		  HAL_Delay(100);
 		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
 		  HAL_Delay(100);
-
-
 	  }
 	  else
 	  {
 		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
 	  }
-    
   }
   
 }
-
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-
   
   HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1);
  
@@ -99,7 +91,6 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
@@ -115,38 +106,27 @@ void SystemClock_Config(void)
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
-
   
   __HAL_RCC_GPIOC_CLK_ENABLE();
-  __HAL_RCC_GPIOA_CLK_ENABLE();
-
-  
+  __HAL_RCC_GPIOA_CLK_ENABLE(); 
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
-
- 
   GPIO_InitStruct.Pin = GPIO_PIN_13;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-  
   GPIO_InitStruct.Pin = GPIO_PIN_5;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
 }
-
-
 void Error_Handler(void)
 {
   
   __disable_irq();
   while (1)
   {
-  }
-  
+  } 
 }
 
 #ifdef  USE_FULL_ASSERT
@@ -156,8 +136,6 @@ void assert_failed(uint8_t *file, uint32_t line)
 }
 #endif
 ```
-
-
 ## Output  :
  
  ![WhatsApp Image 2023-03-28 at 08 31 33](https://user-images.githubusercontent.com/119390227/228116692-42e28d19-ca49-4121-896a-fc40caaaf648.jpg)
